@@ -1,0 +1,244 @@
+/* Base */
+*, *::after, *::before {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+
+/* Variables */
+:root, * {
+    --clr-secondary-50: #D3DAF9; 
+    --clr-secondary-60: #ABB4DD; 
+    --clr-secondary-70: #707DBF; 
+    --clr-secondary-90: #5562A2; 
+    --clr-secondary-100: #37437D; 
+    --clr-secondary-110: #1C2346; 
+
+    --clr-primary-30: #FDEDFE;
+    --clr-primary-40: #FCE2FE;
+    --clr-primary-50: #FCD3FE;
+    --clr-primary-90: #F589FA;
+    --clr-primary-100: #F26CF9;
+
+    --clr-yellow-90: #FFEFC3;
+    --clr-yellow-100: #FFCA39;
+
+    --clr-grey-10: #FFFFFF;
+    --clr-grey-20: #F7F7F7;
+    --clr-grey-30: #EDEDED;
+    --clr-grey-40: #E0E0E1;
+    --clr-grey-50: #C3C3C4;
+    --clr-grey-60: #9F9FA1;
+    --clr-grey-70: #777779;
+    --clr-grey-80: #636365;
+    --clr-grey-90: #434345;
+    --clr-grey-100: #1E1E20;
+
+    --clr-cool-grey-10: #EEEFFF; 
+    --clr-cool-grey-20: #E4E5F5; 
+    --clr-cool-grey-30: #DDDEED; 
+    --clr-cool-grey-40: #D1D2E0; 
+    --clr-cool-grey-50: #B0B1BD; 
+    --clr-cool-grey-60: #8F8F99; 
+    --clr-cool-grey-70: #72737A; 
+    --clr-cool-grey-80: #56565C; 
+    --clr-cool-grey-90: #39393D; 
+    --clr-cool-grey-100: #131314; 
+}
+
+/* Typography */
+body {
+    font-family: 'Inter', sans-serif; 
+    font-size: 12px; 
+    font-weight: 400; 
+    color: var(--clr-grey-100); 
+}
+
+h1 {
+    font-size: 32px; 
+}
+
+h2 {
+    font-size: 28px; 
+}
+
+h3 {
+    font-size: 26px; 
+}
+
+h4 {
+    font-size: 24px; 
+}
+
+h5 {
+    font-size: 22px; 
+}
+
+h6 {
+    font-size: 20px; 
+}
+
+.title-text {
+    line-height: 120;
+}
+
+.body-text {
+    line-height: 124; 
+}
+
+.btn-text {
+    line-height: 100; 
+}
+
+.bold {
+    font-weight: 700; 
+}
+
+.semi-bold {
+    font-weight: 600; 
+}
+
+.medium {
+    font-weight: 500; 
+}
+
+/* Layouts */
+.center-wrapper {
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.grid-wrapper {
+    height: 100%;
+    display: grid; 
+    grid-template-columns: 1fr 6fr; 
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:    nav header,
+                            nav main,
+                            nav footer;
+}
+
+.nav {
+    grid-area: nav;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.header {
+    grid-area: header; 
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.main {
+    grid-area: main; 
+}
+
+.footer {
+    grid-area: footer; 
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 30;
+    border: none; 
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+.btn-round {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    border: none; 
+    background-color: transparent; 
+    cursor: pointer;
+}
+
+.btn-round-small {
+    font-size: 10px; 
+    padding: 6px; 
+}
+
+.btn-round-medium {
+    font-size: 12px; 
+    padding: 7px; 
+}
+
+.btn-round-large {
+    font-size: 14px; 
+    padding: 9px; 
+}
+
+.btn-round-xl {
+    font-size: 16px; 
+    padding: 10px; 
+}
+
+.btn-small {
+    font-size: 10px; 
+    padding: 6px, 10px; 
+}
+
+.btn-medium {
+    font-size: 12px; 
+    padding: 8px, 14px; 
+}
+
+.btn-large {
+    font-size: 14px; 
+    padding: 10px, 16px; 
+}
+
+.btn-pink {
+    background-color: var(--clr-primary-100);
+    color: var(--clr-grey-10);
+
+    &:hover,
+    &:active {
+        background-color: var(--clr-primary-90);
+        color: var(--clr-grey-20);
+    }
+}
+
+.btn-grey {
+    background-color: var(--clr-cool-grey-10);
+    color: var(--clr-secondary-100);
+    
+    &:hover,
+    &:active {
+        background-color: var(--clr-cool-grey-20);
+    }
+}
+
+.btn-border {
+    background-color: transparent;
+    color: var(--clr-grey-90);
+    border: 1px solid var(--clr-grey-30); 
+
+    &:hover,
+    &:active {
+        color: var(--clr-grey-100);
+        border: 1px solid var(--clr-grey-50); 
+    }
+}
+
+.btn-no-border {
+    color: var(--clr-grey-90);
+
+    &:hover,
+    &:active {
+        background-color: var(--clr-grey-30);
+        color: var(--clr-grey-100);
+    }
+}
+
+/* Cards */
