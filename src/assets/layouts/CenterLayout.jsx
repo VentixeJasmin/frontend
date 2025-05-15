@@ -1,7 +1,16 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Footer from '../components/Footer'
 
-export const CenterLayout = () => {
+const centerLayout = () => {
   return (
-    <div>center-layout</div>
+    <>
+      <div className="center-wrapper">
+        <Outlet />
+        <Footer />
+      </div>
+    </>
   )
 }
+
+export default centerLayout

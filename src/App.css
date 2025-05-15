@@ -6,6 +6,11 @@
     /* border: 1px solid red; */
 }
 
+:root {
+    width: 100dvw; 
+    display: flex; 
+    place-content: center;
+}
 
 /* Variables */
 :root, * {
@@ -106,7 +111,7 @@ h6 {
 
 /* Layouts */
 .center-wrapper {
-    height: 100%;
+    height: 100dvh;
     display: flex; 
     flex-direction: column;
     justify-content: center; 
@@ -114,37 +119,170 @@ h6 {
 }
 
 .grid-wrapper {
-    height: 100%;
+    height: 100dvh;
+    width: 100dvw;
     display: grid; 
-    grid-template-columns: 1fr 6fr; 
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:    nav header,
-                            nav main,
-                            nav footer;
+    grid-template-rows: auto 1fr 3.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem; 
+    padding: 1rem; 
+
+    @media (min-width: 768px) {
+        max-width: 720px;
+        grid-template-columns: 1fr 4fr; 
+        grid-template-areas:    "nav header"
+                                "nav main"
+                                "nav footer";
+    }
+
+    @media (min-width: 1200px) {
+        max-width: 1140px;
+    } 
 }
 
 .nav {
-    grid-area: nav;
-    display: flex; 
-    flex-direction: column; 
+    display: none; 
+    
+    @media (min-width: 768px) {
+        display: flex; 
+        flex-direction: column; 
+        grid-area: nav;
+        background-color: var(--clr-cool-grey-10);
+        padding: 1rem; 
+        border-radius: 16px;
+        justify-content: space-between;
+    }
+
+    .btn {
+        display: flex; 
+        flex-direction: row; 
+        gap: .5rem; 
+        justify-content: center;
+    }
 }
 
-.header {
-    grid-area: header; 
+
+
+.logo-holder {
+    display: flex; 
+    gap: 1rem; 
+    padding: 1rem;
+    padding-bottom: 2rem; 
+}
+
+.nav-list {
+    display: flex; 
+    flex-direction: column; 
+    gap: 2rem; 
+    list-style: none;  
+    font-size: 20px;
+    justify-content: start;
+    padding-left: 1rem;
+}
+
+.nav-link {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    gap: .5rem; 
+    color: var(--clr-secondary-100); 
+
+    p {
+        font-size: 14px;
+    }
+
+    &:active,
+    &:hover {
+        color: var(--clr-primary-100);
+    } 
+} 
+    
+
+.header {  
     display: flex; 
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    background-color: var(--clr-grey-20); 
+    padding: 1rem; 
+    
+    border-radius: 16px; 
+
+    @media (min-width: 768px) {
+        grid-area: header; 
+    }
+}
+
+.search-field-container {
+    position: relative; 
+}
+
+.looking-glass {
+    position: absolute; 
+    top: .6rem; 
+    right: .8rem; 
+    font-size: 24px;
+    cursor: pointer; 
+}
+.search-bar {
+    border-radius: 16px; 
+    padding: .8rem 1rem; 
+    width: 300px; 
+    border: none; 
+    font-family: "Inter", sans-serif;
+
+    &::placeholder {
+        font-family: "Inter", sans-serif;
+        color: var(--clr-grey-60);
+    }
+
+}
+
+.breadcrumb-container {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.breadcrumb {
+    display: flex; 
+    flex-direction: row;
+    list-style: none;
+    gap: 1rem; 
+}
+
+.current-page-title {
+    color: var(--clr-secondary-100);
 }
 
 .main {
-    grid-area: main; 
+    background-color: var(--clr-grey-20);
+    border-radius: 16px; 
+    display: grid; 
+    padding: 1rem;
+
+
+    @media (min-width: 768px) {
+        grid-area: main; 
+    }
+    
 }
 
 .footer {
-    grid-area: footer; 
     display: flex; 
     flex-direction: row;
     align-items: center;
+    background-color: var(--clr-grey-20);
+    padding: 1rem; 
+    border-radius: 16px;
+    gap: 1rem; 
+
+    @media (min-width: 768px) {
+        grid-area: footer; 
+    }
+}
+
+.footer-text {
+    font-size: 12px;
 }
 
 /* Buttons */
@@ -210,12 +348,22 @@ h6 {
 }
 
 .btn-grey {
-    background-color: var(--clr-cool-grey-10);
+    background-color: var(--clr-cool-grey-20);
     color: var(--clr-secondary-100);
     
     &:hover,
     &:active {
         background-color: var(--clr-cool-grey-20);
+    }
+}
+
+.btn-blue {
+    background-color: var(--clr-secondary-100);
+    color: var(--clr-grey-10);
+    
+    &:hover,
+    &:active {
+        background-color: var(--clr-secondary-90);
     }
 }
 
@@ -242,3 +390,11 @@ h6 {
 }
 
 /* Cards */
+
+/* StartPage */
+.cover-photo {
+    background-image: url('../public/images/pexels-joshsorenson-154147.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    aspect-ratio: 1;
+}

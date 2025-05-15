@@ -1,0 +1,102 @@
+Ventixe MVP 
+
+Entities
+	EventEntity
+	- Id 
+	- Title 
+	- Date 
+	- Description
+	- TicketTypeId
+	- TicketTypeEntity
+	- CategoryId 
+	- CategoryEntity
+	- VenueId
+	- VenueEntity
+
+	CategoryEntity 
+	- Id
+	- Title 
+	- Icon
+
+	VenueEntity
+	- Id
+	- Title 
+	- VenueTypeId
+	- Description 
+	- Capacity 
+	- StreetAddress
+	- PostCode 
+	- City
+	- Image 
+	- MapUrl
+
+	VenueTypeEntity
+	- Id 
+	- VenueType
+
+	UserEntity
+	- Id
+	- Email/username 
+	- FirstName 
+	- LastName 
+
+	CustomerEntity
+	- Id 
+	- Email
+	- FirstName 
+	- LastName 
+	- PhoneNumber 
+	
+	OrderEntity
+	- Id 
+	- (FK) EventId
+	- DateTime
+	- TicketTypeId
+	- TicketTypeEntity
+	- Quantity
+	- TotalPrice 
+	- CustomerId
+	- CustomerEntity 
+	- PaymentMethodId 
+	- PaymentMethodEntity
+	- (bool) Paid 
+
+	TicketTypeEntity
+	- Id 
+	- (FK) EventId
+	- Title 
+	- Price 
+	- Description 
+
+	PaymentMethodEntity 
+	- Id 
+	- PaymentMethod 
+	- (bool) DirectPayment
+
+
+MicroServices 
+	EmailService 
+	AuthService 
+	ProfileService
+	SearchService
+	VenueService 
+	EventService 
+	OrderService 
+	CustomerService
+	CalendarService 
+	MapService
+
+Azure Service Bus 
+
+Topics 
+	user-created 
+	event-created 
+	order-created 
+	venue-created
+
+Queues
+email-service
+profile-service
+event-service
+order-service
+venue-service 
