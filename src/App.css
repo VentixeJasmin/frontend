@@ -112,10 +112,58 @@ h6 {
 /* Layouts */
 .center-wrapper {
     height: 100dvh;
+    width: 100dvw;
     display: flex; 
     flex-direction: column;
-    justify-content: center; 
+    justify-content: space-between; 
     align-items: center;
+    background-image: url(../public/images/pexels-joshsorenson-154147.jpg);
+    background-size: cover;
+}
+
+.headline-container {
+    padding-top: 18rem;
+    gap: 4rem; 
+}
+
+.headline {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1rem; 
+
+    .headline-logo {
+        height: 150px; 
+    }
+
+    h1 {
+        color: var(--clr-secondary-100);
+        font-size: 150px; 
+        font-weight: 500; 
+    }
+}
+
+.teaser {
+    align-items: center; 
+    h2 {
+        text-align: center;
+        color: var(--clr-secondary-100); 
+    }
+}
+
+.button-container {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1rem; 
+    padding-block: 2rem; 
+}
+.photo-byline {
+    place-self: end;
+    padding: 1rem; 
+    color: var(--clr-primary-30);
 }
 
 .grid-wrapper {
