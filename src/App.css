@@ -12,6 +12,11 @@
     place-content: center;
 }
 
+html, body {
+    height: 100vh; 
+    overflow: hidden; 
+}
+
 /* Variables */
 :root, * {
     --clr-secondary-50: #D3DAF9; 
@@ -111,59 +116,31 @@ h6 {
 
 /* Layouts */
 .center-wrapper {
-    height: 100dvh;
-    width: 100dvw;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
     display: flex; 
     flex-direction: column;
     justify-content: space-between; 
     align-items: center;
     background-image: url(../public/images/pexels-joshsorenson-154147.jpg);
     background-size: cover;
-}
+    background-repeat: no-repeat;
+    background-position: 35%;
 
-.headline-container {
-    padding-top: 18rem;
-    gap: 4rem; 
-}
-
-.headline {
-    display: flex; 
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 1rem; 
-
-    .headline-logo {
-        height: 150px; 
-    }
-
-    h1 {
-        color: var(--clr-secondary-100);
-        font-size: 150px; 
-        font-weight: 500; 
-    }
-}
-
-.teaser {
-    align-items: center; 
-    h2 {
-        text-align: center;
-        color: var(--clr-secondary-100); 
-    }
-}
-
-.button-container {
-    display: flex; 
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 1rem; 
-    padding-block: 2rem; 
-}
-.photo-byline {
+    .photo-byline {
     place-self: end;
     padding: 1rem; 
     color: var(--clr-primary-30);
+}
+    
+    @media (min-width: 768px) {
+        background-position: 25%;
+    }
+
+    @media (min-width: 1200px) {
+        background-position: 0;
+    } 
 }
 
 .grid-wrapper {
@@ -439,10 +416,150 @@ h6 {
 
 /* Cards */
 
+/* Forms */
+.form-container {
+    background-color: var(--clr-grey-10);
+    border-radius: 16px; 
+    border: none; 
+    margin: auto; 
+}
+
+.form {
+    padding: 1rem; 
+    display: flex; 
+    flex-direction: column; 
+    gap: .5rem;
+}
+
+.form-header {
+    padding: .5rem; 
+    text-align: center; 
+}
+
+.form-group {
+    display: flex; 
+    flex-direction: column;
+
+    label {
+        font-family: "Inter", sans-serif;
+        padding: .5rem; 
+    }
+}
+
+.form-input-group {
+    position: relative; 
+
+    input {
+        font-family: "Inter", sans-serif;
+        width: 100%;
+        border: 1px solid var(--clr-cool-grey-30); 
+        border-radius: 10px; 
+        padding: .5rem; 
+
+        &::placeholder {
+            font-family: "Inter", sans-serif;
+            color: var(--clr-grey-60);
+        }
+    }
+
+    span {
+        position: absolute; 
+    }
+}
+
+.form-input-checkbox-group {
+    display: flex; 
+    gap: .5rem; 
+    padding: .5rem; 
+}
+
 /* StartPage */
-.cover-photo {
-    background-image: url('../public/images/pexels-joshsorenson-154147.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    aspect-ratio: 1;
+.headline-container {
+    padding-top: 10rem; 
+
+    @media (min-width: 768px) {
+        padding-top: 16rem; 
+    }
+}
+
+.headline {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1rem; 
+    padding-bottom: 1rem;
+
+    .headline-logo {
+        height: 60px; 
+    }
+
+    h1 {
+        color: var(--clr-secondary-100);
+        font-size: 60px; 
+        font-weight: 500; 
+    }
+
+    @media (min-width: 768px) {
+        .headline-logo {
+            height: 100px; 
+        }
+
+        h1 {
+            font-size: 100px; 
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .headline-logo {
+            height: 150px; 
+        }
+
+        h1 {
+            font-size: 150px; 
+        }
+    } 
+}
+
+.teaser {
+    align-items: center; 
+    padding: 0rem 2rem 2rem 1rem;
+    
+    h4 {
+        text-align: center;
+        color: var(--clr-secondary-100); 
+    }
+}
+
+
+.button-container {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 1rem; 
+    padding-block: 2rem; 
+
+    @media (min-width: 768px) {
+        padding-block: 0; 
+    }
+
+    @media (min-width: 1200px) {
+        
+    } 
+}
+
+/* SignUp Page */
+
+
+.signup-form-container {
+    width: 80%;
+
+    @media (min-width: 768px) {
+        width: 40%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30%;
+    } 
 }
