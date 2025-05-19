@@ -51,6 +51,7 @@
     --clr-cool-grey-80: #56565C; 
     --clr-cool-grey-90: #39393D; 
     --clr-cool-grey-100: #131314; 
+
 }
 
 /* Typography */
@@ -107,6 +108,10 @@ h6 {
 
 .medium {
     font-weight: 500; 
+}
+
+.light {
+    font-weight: 300; 
 }
 
 /* Layouts */
@@ -264,6 +269,31 @@ h6 {
         background-color: var(--clr-grey-30);
         color: var(--clr-grey-100);
     }
+}
+
+/* Details */
+.round-icon-holder {
+    display: flex; 
+    border-radius: 50%;
+    height: 44px; 
+    width: 44px; 
+    aspect-ratio: 1;
+    justify-content: center; 
+    align-items: center; 
+    font-size: 20px; 
+}
+
+.square-icon-holder {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 30px; 
+    width: 30px; 
+    aspect-ratio: 1;
+    font-size: 1rem; 
+    background-color: var(--clr-grey-10); 
+    color: var(--clr-secondary-100); 
+    border-radius: 6px; 
 }
 
 /* Nav */
@@ -510,9 +540,8 @@ h6 {
 .main {
     background-color: var(--clr-grey-20);
     border-radius: 16px; 
-    display: grid; 
-    padding: 1rem;
-
+    display: flex; 
+    padding: .5rem;
 
     @media (min-width: 768px) {
         grid-area: main; 
@@ -559,6 +588,13 @@ h6 {
 }
 
 /* Cards */
+.card {
+    display: flex; 
+    margin: .5rem; 
+    padding: .5rem; 
+    border-radius: 1rem; 
+    background-color: var(--clr-grey-10);
+}
 
 /* Forms */
 .form-container {
@@ -576,8 +612,11 @@ h6 {
 }
 
 .form-header {
+    display: flex; 
+    flex-direction: column;
     padding: .5rem; 
     text-align: center; 
+    gap: 1rem; 
 }
 
 .form-group {
@@ -719,3 +758,143 @@ h6 {
     } 
 }
 
+/* Verify Page */
+.verify-form-container {
+    width: 80%; 
+
+    @media (min-width: 768px) {
+        width: 40%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30%;
+    } 
+}
+
+/* Dashboard */
+.dashboard-main {
+    flex-direction: column;
+    width: 100%; 
+    padding: .5rem; 
+    gap: 1rem; 
+}
+
+.fast-fact-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-facts {
+    flex-direction: column;
+    justify-content: space-between; 
+    flex: 1; 
+    gap: .5rem; 
+    p {
+        color: var(--clr-grey-60);
+    }
+}
+
+.upcoming-events-container {
+    flex-direction: column; 
+    display: flex; 
+    gap: 1rem; 
+}
+
+.upcoming-headline {
+    padding: .5rem; 
+}
+
+.event-card {
+    flex-direction: column;
+    height: 360px; 
+    padding: 0; 
+    background-color: var(--clr-cool-grey-10);
+}
+
+.event-card-image {
+    flex: 1; 
+
+    img {
+        object-fit: cover; 
+        overflow: hidden; 
+        height: 180px; 
+        width: 100%; 
+        border-radius: 1rem 1rem 0 0; 
+    }
+}
+
+.event-card-info {
+    flex: 1;
+    display: flex; 
+    flex-direction: column; 
+    padding: 1rem; 
+    gap: .5rem; 
+
+    .event-title-text {
+        font-size: 16px; 
+        color: var(--clr-grey-90);
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        
+    }
+
+    .location-text {
+        font-size: 11px;
+        color: var(--clr-grey-80);
+        
+    }
+
+    .description-text {
+        color: var(--clr-grey-90);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }  
+
+    .detail-info {
+    padding-top: 1rem; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .time-info {
+        display: flex; 
+        flex-direction: column; 
+    }
+}
+
+.recent-activity-card {
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+}
+
+.notification {
+    display: flex; 
+    flex-direction: row; 
+    gap: 1rem; 
+}
+
+.notification-message {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Events */
+
+/* Orders */
+
+/* Venues */
