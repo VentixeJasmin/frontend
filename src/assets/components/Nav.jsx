@@ -13,7 +13,8 @@ const Nav = () => {
       <div>
         <div className="logo-holder">
           <a href="/dashboard">
-            <img src="public/images/logo-name.svg"></img>
+            <img src="public/images/logo-name.svg" id="logo-text"></img>
+            <img src="public/images/logo-icon.svg" id="logo-icon"></img>
           </a>
         </div>
         <ul className="nav-list">
@@ -42,10 +43,35 @@ const Nav = () => {
             </NavLink>
           </li>
         </ul>
+        <div className="nav-list-tablet">
+            <button className="btn btn-round">
+              <NavLink to="/dashboard" className="nav-link" id="dashboard">
+                <PiSquaresFour />
+              </NavLink>
+            </button>
+            <button className="btn btn-round">
+              <NavLink to="/events" className="nav-link" id="events">
+                <LuTicket />
+              </NavLink>
+            </button>
+            <button className="btn btn-round">
+              <NavLink to="/orders" className="nav-link" id="orders">
+                <FaRegCheckSquare />
+              </NavLink>
+            </button>
+            <button className="btn btn-round">
+              <NavLink to="/venues" className="nav-link" id="venues">
+                <MdOutlineStadium />
+              </NavLink>
+            </button>
+        </div>
       </div>
-      <button className="btn btn-large btn-grey">
+      <button className="btn btn-large btn-grey" id="btn-signout">
         <RxExit />
-        Sign Out
+        <p>Sign Out</p>
+      </button>
+      <button className="btn btn-round btn-grey" id="btn-round-signout">
+        <RxExit />
       </button>
     </div>
   )
