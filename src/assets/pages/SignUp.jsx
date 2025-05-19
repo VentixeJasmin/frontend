@@ -4,7 +4,7 @@ const SignUp = () => {
   return (
     <div className="center-wrapper">
       <div className="form-container signup-form-container">
-        <form action="post" className="form signup-form" novalidate>
+        <form action="post" className="form signup-form" noValidate>
           <div className="form-header">
             <h4>Create Account</h4>
           </div>
