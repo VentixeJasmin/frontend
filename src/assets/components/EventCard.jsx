@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PiCalendarDots } from "react-icons/pi";
+import { Link } from 'react-router-dom';
 
 
 const EventCard = ({event}) => {
@@ -21,7 +22,7 @@ const EventCard = ({event}) => {
   return (
     <div className="card event-card">
         <div className="event-card-image">
-        <img src="{event.EventImagePath}" alt="Event image." />
+        <img src={`${event.eventImagePath}`} alt="Event image." />
         </div>
         <div className="event-card-info">
         <p className="title-text semi-bold event-title-text">{event.title}</p>
@@ -41,8 +42,10 @@ const EventCard = ({event}) => {
                     </div>
                 </div>
             </div>
+            <Link to={`/events/${event.id}`}>
+                <button className="btn btn-small btn-pink">View Details</button>
+            </Link>
             
-            <button className="btn btn-small btn-pink">View Details</button>
         </div>
         </div>
     </div> 
