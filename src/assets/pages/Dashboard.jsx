@@ -4,6 +4,8 @@ import { LuTicket } from "react-icons/lu";
 import EventCard from '../components/EventCard';
 import RecentActivityCard from '../components/RecentActivityCard';
 import FactCard from '../components/FactCard';
+import { PiPlus } from "react-icons/pi";
+import { Link } from 'react-router-dom';
 
 
 const Dashboard = () => {
@@ -47,6 +49,13 @@ const Dashboard = () => {
       <div className="upcoming-events-container">
         <div className="upcoming-headline">
           <h6>Upcoming Events</h6>
+          <Link to="/events/AddEvent">
+            <button className="btn btn-pink btn-medium">
+              <PiPlus />
+              Add Event
+            </button>
+          </Link>
+          
         </div>
         <div className="event-card-holder">
           {

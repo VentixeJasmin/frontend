@@ -169,6 +169,11 @@ h6 {
 
 /* Buttons */
 .btn {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: .2rem; 
     border-radius: 30;
     border: none; 
     background-color: transparent; 
@@ -547,7 +552,9 @@ h6 {
 .main {
     background-color: var(--clr-grey-20);
     border-radius: 16px; 
-    display: flex; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
     padding: .5rem;
 
     @media (min-width: 768px) {
@@ -639,7 +646,9 @@ h6 {
 .form-input-group {
     position: relative; 
 
-    input {
+    input,
+    select, 
+    textarea {
         font-family: "Inter", sans-serif;
         width: 100%;
         border: 1px solid var(--clr-cool-grey-30); 
@@ -655,6 +664,8 @@ h6 {
     span {
         position: absolute; 
     }
+
+
 }
 
 .form-input-checkbox-group {
@@ -810,6 +821,10 @@ h6 {
 }
 
 .upcoming-headline {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
     padding: .5rem; 
 }
 
@@ -927,6 +942,20 @@ h6 {
     flex-direction: row; 
     flex-wrap: wrap;
 }
+
+/* Add Event */
+.add-event-form-container {
+    width: 80dvw;
+
+    @media (min-width: 768px) {
+        width: 40dvw;
+    }
+
+    @media (min-width: 1200px) {
+        width: 30dvw;
+    } 
+}
+
 /* Orders */
 
 /* Venues */
