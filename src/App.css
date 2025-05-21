@@ -296,6 +296,13 @@ h6 {
     border-radius: 6px; 
 }
 
+.horizontal {
+    display:flex; 
+    flex-direction: horizontal;
+    gap: 1rem;
+    align-items: center; 
+}
+
 /* Nav */
 .nav {
     display: none; 
@@ -798,17 +805,34 @@ h6 {
     flex-direction: column; 
     display: flex; 
     gap: 1rem; 
+
+    
 }
 
 .upcoming-headline {
     padding: .5rem; 
 }
 
+.event-card-holder {
+    display: flex; 
+    flex-direction: column; 
+
+    @media (min-width: 768px) {
+        flex-direction: row; 
+    }
+}
+
 .event-card {
     flex-direction: column;
-    height: 360px; 
+
+    height: 350px; 
     padding: 0; 
+    margin-bottom: 1rem;
     background-color: var(--clr-cool-grey-10);
+
+    @media (min-width: 768px) {
+        flex: 1;
+    }
 }
 
 .event-card-image {
@@ -845,7 +869,6 @@ h6 {
     .location-text {
         font-size: 11px;
         color: var(--clr-grey-80);
-        
     }
 
     .description-text {
@@ -859,16 +882,21 @@ h6 {
     }  
 
     .detail-info {
-    padding-top: 1rem; 
-    display: flex; 
-    flex-direction: row; 
-    justify-content: space-between;
-    align-items: center;
+        padding-top: 1rem; 
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .date-info {
+        font-size: 11px; 
     }
 
     .time-info {
         display: flex; 
         flex-direction: column; 
+        font-size: 11px; 
     }
 }
 
@@ -894,7 +922,11 @@ h6 {
 }
 
 /* Events */
-
+.events-container {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+}
 /* Orders */
 
 /* Venues */
