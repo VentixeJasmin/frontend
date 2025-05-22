@@ -11,20 +11,33 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
 
     const [events, setEvents] = useState ([])
+    const [venues, setVenues] = useState ([])
   
-    const url = "https://localhost:7234/api/Events/"
+    const eventUrl = "https://localhost:7234/api/Events/"
+    const venueUrl = "https://localhost:7095/api/Venues/"
+
   
     const getEvents = async () => {
-      const res = await fetch (url)
+      const res = await fetch (eventUrl)
   
       if (res.ok) {
         const data = await res.json() 
         setEvents(data)
       }
     }
+
+    const getVenues = async () => {
+      const res = await fetch (venueUrl)
+  
+      if (res.ok) {
+        const data = await res.json() 
+        setVenues(data)
+      }
+    }
   
     useEffect(() => {
       getEvents()
+      getVenues()
     }, [])
   
   return (
