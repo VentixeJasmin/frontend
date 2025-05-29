@@ -29,8 +29,8 @@ const Header = () => {
         <button className="btn-round btn-round-xl btn-blue" id="btn-notifications"><IoMdNotificationsOutline /></button>
       </div>
       <button className="btn-hamburger" id="btn-hamburger">
-          <RxHamburgerMenu />
-        </button>
+        <RxHamburgerMenu />
+      </button>
     </div>
   )
 }

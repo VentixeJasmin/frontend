@@ -1,4 +1,6 @@
 import React, { useEffect, useState }  from 'react'
+import { useNavigate, Link } from 'react-router-dom';
+import { PiX } from "react-icons/pi";
 
 const AddEventForm = () => {
 
@@ -54,6 +56,11 @@ const AddEventForm = () => {
             <form action="post" className="form add-event-form" noValidate>
                 <div className="form-header">
                     <h4>Create Event</h4>
+                    <Link to="/events">
+                        <button className="btn btn-round btn-round-xl btn-no-border">
+                            <PiX />
+                        </button>
+                    </Link>
                 </div>
                 <div className="form-group">
                     <label htmlFor="event-image">Event Image</label>

@@ -1,13 +1,26 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
+import { PiX } from "react-icons/pi";
 
 const Verify = () => {
   const navigate = useNavigate(); 
+  const [searchParams] = useSearchParams();
 
   const [formData, setFormData] = useState({
     email: '',
     code: ''
   });
+
+  //Had help with this pece of code from Claude AI, to prefill the email input field
+  useEffect(() => {
+    const emailFromUrl = searchParams.get('email');
+    if (emailFromUrl) {
+      setFormData(prev => ({
+        ...prev,
+        email: emailFromUrl
+      }));
+    }
+  }, [searchParams]);
 
 const handleChange = (e) => {
   setFormData({
@@ -49,6 +62,13 @@ const handleChange = (e) => {
         <form onSubmit={handleSubmit} className="form verify-form" noValidate>
           <div className="form-header">
             <h4>Verify your email</h4>
+            <Link to="/">
+              <button className="btn btn-round btn-round-xl btn-no-border">
+                <PiX />
+              </button>
+            </Link>
+          </div>
+          <div className="form-info">
             <p>Please enter your email address and the the six digit code that we sent to your email account.</p>
             <p>Be sure to check your junk mail if you didn't receive the message.</p> 
           </div>
@@ -62,7 +82,7 @@ const handleChange = (e) => {
           <div className="form-group">
             <label htmlFor="code">Verification code</label>
             <div className="form-input-group">
-              <input type="number" name="code" value={formData.code} onChange={handleChange} placeholder="Enter code"></input>
+              <input type="text" name="code" value={formData.code} onChange={handleChange} placeholder="Enter code"></input>
               <span className="form-validation"></span>
             </div>  
           </div>

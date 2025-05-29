@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { PiX } from "react-icons/pi";
 
 const SignUp = () => {
   const navigate = useNavigate();  
@@ -25,7 +26,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://authservice-jdf-bvbxf7b5bqdndqhy.swedencentral-01.azurewebsites.net/api/auth/signup', {
+      const response = await fetch('authservice-jasmin-h9euf4dpghc5d7a8.swedencentral-01.azurewebsites.net/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,6 +55,11 @@ const SignUp = () => {
         <form onSubmit={handleSubmit} className="form signup-form" noValidate>
           <div className="form-header">
             <h4>Create Account</h4>
+            <Link to="/">
+              <button className="btn btn-round btn-round-xl btn-no-border">
+                <PiX />
+              </button>
+            </Link>
           </div>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
