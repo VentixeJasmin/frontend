@@ -13,8 +13,8 @@ const Dashboard = () => {
     const [events, setEvents] = useState ([])
     const [venues, setVenues] = useState ([])
   
-    const eventUrl = "https://localhost:7234/api/Events/"
-    const venueUrl = "https://localhost:7095/api/Venues/"
+    const eventUrl = "https://eventservice-jdf-fjhvgdfdhsdvetdw.swedencentral-01.azurewebsites.net/api/Events/"
+    const venueUrl = "https://venueservice-jdf-azc2b5duepaygrfr.swedencentral-01.azurewebsites.net/api/Venues/"
 
   
     const getEvents = async () => {

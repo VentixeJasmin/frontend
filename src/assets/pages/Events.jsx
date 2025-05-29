@@ -5,7 +5,7 @@ import EventCard from '../components/EventCard'
 const Events = () => {
   const [events, setEvents] = useState ([])
 
-  const url = "https://localhost:7234/api/Events/"
+  const url = "https://eventservice-jdf-fjhvgdfdhsdvetdw.swedencentral-01.azurewebsites.net/api/Events/"
 
   const getEvents = async () => {
     const res = await fetch (url)
