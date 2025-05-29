@@ -6,8 +6,8 @@ Entities
 	- Title 
 	- Date 
 	- Description
-	- TicketTypeId
-	- TicketTypeEntity
+	(- TicketTypeId)
+	(- TicketTypeEntity)
 	- CategoryId 
 	- CategoryEntity
 	- VenueId
@@ -21,7 +21,7 @@ Entities
 	VenueEntity
 	- Id
 	- Title 
-	- VenueTypeId
+	(- VenueTypeId)
 	- Description 
 	- Capacity 
 	- StreetAddress
@@ -30,9 +30,9 @@ Entities
 	- Image 
 	- MapUrl
 
-	VenueTypeEntity
+	(VenueTypeEntity
 	- Id 
-	- VenueType
+	- VenueType)
 
 	UserEntity
 	- Id
@@ -100,3 +100,84 @@ profile-service
 event-service
 order-service
 venue-service 
+
+
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\VentixeBackend\EventService\Data\Contexts\EventDb.mdf;Integrated Security=True;Connect Timeout=30
+
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\VentixeBackend\VenueService\Presentation\Data\VenueDb.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True
+
+Categories: 
+1	Art and Design
+2	Music
+3	Litterature
+4	Film
+5	Dance
+6	Technology
+7	Family
+8	Business
+9	Food and Culinary
+10	Drinks
+11	Health and Wellness
+12	Sports
+13	Networking
+14	Fashion
+15	Education
+16	Motor
+17	Outdoors and Adventure
+
+Events: 
+73abf543-a5ca-48c3-8ed3-87f89eaace29	Adventure Gear Show	2029-06-05 15:00:00	Welcome to a unique exhibition of a series of state of the art new adventure gear with baffling functionality, design and longevity. This display will showcase the future of the adventure!	17	1
+ca48e900-b308-4cb3-ac5a-1ef13be4500d	Symphony Under the Starts	2029-04-20 19:00:00	Welcome to a magical starlit concert with the Los Angeles Philharmonic Orchestra playing a sci fi inspired show.	2	2
+cb0fa225-25ae-4602-ab2f-cea2b7cc02cc	Runway Revolution 2029	2029-05-01 18:00:00	Vogue Hall Friends invite you to a showcase of the ltest fashion by the loudest and most avant garde fashion designers of tomorrow.	14	3
+
+
+
+1	73abf543-a5ca-48c3-8ed3-87f89eaace29	Standard	40,00	General admittance with access to exhibition and standing room for the main show.
+4	73abf543-a5ca-48c3-8ed3-87f89eaace29	Silver	60,00	Seating for the main show and standard access to exhibition area.
+5	73abf543-a5ca-48c3-8ed3-87f89eaace29	Gold	100,00	Top tier seating, line cuttng for try it yourself events in exhibition and breakfast package included.
+6	73abf543-a5ca-48c3-8ed3-87f89eaace29	Diamond	200,00	Early admittance to exhibition with opportunities for meet and greet with designers of revolutionizing event gear. Discounts at multiple shops, breakfast and dinner included. Top toer seats right at the stage.
+9	ca48e900-b308-4cb3-ac5a-1ef13be4500d	Standard	50,00	General admittance with access to exhibition and standing room for the concert.
+10	ca48e900-b308-4cb3-ac5a-1ef13be4500d	Stage Pass	150,00	Top tier seating, opportunity to meet the musicians and 2 drinks included.
+11	cb0fa225-25ae-4602-ab2f-cea2b7cc02cc	Standard	100,00	General admittance, seating included.
+12	cb0fa225-25ae-4602-ab2f-cea2b7cc02cc	Silver	150,00	Mid-tier seating, 2 drinks included.
+13	cb0fa225-25ae-4602-ab2f-cea2b7cc02cc	Gold	250,00	Second row seats, all you can eat and drink buffet and close up view of the designs after the show.
+14	cb0fa225-25ae-4602-ab2f-cea2b7cc02cc	Diamond	500,00	Fron row seating, drinks and food included, meet and greet with designers after the show. 
+
+
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\VentixeBackend\AuthService\AuthService\Data\AuthDb.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True
+
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\VentixeBackend\EventService\Data\Contexts\VenueDb.mdf;Integrated Security=True;Connect Timeout=30
+
+
+using System;
+using System.Collections.Generic;
+using Azure;
+using Azure.Communication.Email;
+
+string connectionString = "endpoint=https://ventixe-cs-jdf.europe.communication.azure.com/;accesskey=53O0QsqtLCvNj7J6f8feYXuVae6NnLdhLPUw8G1akJA3M8flGwFaJQQJ99BEACULyCpq7IbPAAAAAZCSAasp";
+var emailClient = new EmailClient(connectionString);
+
+
+var emailMessage = new EmailMessage(
+    senderAddress: "DoNotReply@bd47a324-45ff-4154-9c08-6b96325eb4cc.azurecomm.net",
+    content: new EmailContent("Test Email")
+    {
+        PlainText = "Hello world via email.",
+        Html = @"
+		<html>
+			<body>
+				<h1>Hello world via email.</h1>
+			</body>
+		</html>"
+    },
+    recipients: new EmailRecipients(new List<EmailAddress> { new EmailAddress("<to_email>") }));
+    
+
+EmailSendOperation emailSendOperation = emailClient.Send(
+    WaitUntil.Completed,
+    emailMessage);
+
+
+
+Redis database usernme: default
+PAssword: Jrjyopl88knJIwHACI8yJAilnj8Uol9S
