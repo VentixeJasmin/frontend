@@ -554,7 +554,7 @@ h6 {
     border-radius: 16px; 
     display: flex;
     justify-content: center; 
-    align-items: center;  
+    align-items: start;  
     padding: .5rem;
 
     @media (min-width: 768px) {
@@ -627,10 +627,19 @@ h6 {
 
 .form-header {
     display: flex; 
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;
     padding: .5rem; 
     text-align: center; 
     gap: 1rem; 
+}
+
+.form-info {
+    padding: .5rem; 
+    display: flex; 
+    flex-direction: column; 
+    gap: .5rem; 
 }
 
 .form-group {
@@ -787,6 +796,13 @@ h6 {
     @media (min-width: 1200px) {
         width: 30%;
     } 
+
+    .verify-form {
+
+        .btn-blue {
+            margin-top: 1rem;
+        }
+    }
 }
 
 /* Dashboard */
@@ -937,6 +953,20 @@ h6 {
 }
 
 /* Events */
+.events-page {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: start; 
+}
+
+.events-header {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: start; 
+    padding: 1rem; 
+}
+
 .events-container {
     display: flex; 
     flex-direction: row; 
@@ -959,3 +989,45 @@ h6 {
 /* Orders */
 
 /* Venues */
+.venues-page {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.venues-header {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.venues-container {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.venue-table-header {
+    display: none; 
+
+    @media (min-width: 768px) {
+        margin: .5rem; 
+        padding: .5rem; 
+        border-radius: 1rem; 
+        background-color: var(--clr-grey-10);
+        display: grid; 
+        grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
+        width: 100dvh; 
+    }
+}
+
+.venue-card {
+    display: flex; 
+    flex-direction: column; 
+    width: 100dvh; 
+
+
+    @media (min-width: 768px) {  
+        display: grid; 
+        grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
+    }
+}

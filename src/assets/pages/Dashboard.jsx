@@ -6,6 +6,7 @@ import RecentActivityCard from '../components/RecentActivityCard';
 import FactCard from '../components/FactCard';
 import { PiPlus } from "react-icons/pi";
 import { Link } from 'react-router-dom';
+import { PiCalendarDot } from "react-icons/pi";
 
 
 const Dashboard = () => {
@@ -43,7 +44,13 @@ const Dashboard = () => {
   return (
     <div className="main dashboard-main">
       <div className="fast-fact-container">
-        <FactCard/>
+        <div className="card card-facts">
+            <div className="btn-pink round-icon-holder">
+              <PiCalendarDot/>
+            </div>
+            <p>Managed events</p>
+            <h6>{events.length}</h6>
+        </div>
         <div className="card card-facts">
           <div className="btn-pink round-icon-holder">
             <FaRegCheckSquare />
@@ -79,7 +86,6 @@ const Dashboard = () => {
         </div>
         
       </div>
-      <RecentActivityCard/>
     </div>
   )
 }

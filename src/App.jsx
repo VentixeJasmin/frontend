@@ -15,6 +15,7 @@ import OrderDetails from './assets/pages/OrderDetails'
 import Venues from './assets/pages/Venues'
 import VenueDetails from './assets/pages/VenueDetails'
 import AddEvent from './assets/pages/AddEvent'
+import AddVenue from './assets/pages/AddVenue'
 
 
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/events/addEvent" element={<AddEvent />} />
             <Route path="/venues" element={<Venues />}/>
             <Route path="/venues/:id" element={<VenueDetails />} />
+            <Route path="/venues/addVenue" element={<AddVenue />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<OrderDetails />} />
         </Route>
