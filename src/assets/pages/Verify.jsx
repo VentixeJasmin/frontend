@@ -1,19 +1,68 @@
-import React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Verify = () => {
+  const navigate = useNavigate(); 
+
+  const [formData, setFormData] = useState({
+    email: '',
+    code: ''
+  });
+
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
+  });
+};
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('https://localhost:7153/api/verification/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        const result = await response.json(); 
+        console.log('Verification successful:', result);
+        navigate("/dashboard"); 
+      }
+      else {
+        const errorData = await response.json();
+        console.error('Verification failed:', errorData);
+      }
+    }
+    catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="center-wrapper">
       <div className="form-container verify-form-container">
-        <form action="post" className="form verify-form" noValidate>
+        <form onSubmit={handleSubmit} className="form verify-form" noValidate>
           <div className="form-header">
             <h4>Verify your email</h4>
-            <p>Please enter the six digit code that we sent to your email account.</p>
+            <p>Please enter your email address and the the six digit code that we sent to your email account.</p>
             <p>Be sure to check your junk mail if you didn't receive the message.</p> 
           </div>
           <div className="form-group">
-            <label htmlFor="verification-number">Verification code</label>
+            <label htmlFor="email">Email Address</label>
             <div className="form-input-group">
-              <input type="number" name="verification-number" placeholder="Enter code"></input>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Ex: abc@de.fg"></input>
+              <span className="form-validation"></span>
+            </div>  
+          </div>
+          <div className="form-group">
+            <label htmlFor="code">Verification code</label>
+            <div className="form-input-group">
+              <input type="number" name="code" value={formData.code} onChange={handleChange} placeholder="Enter code"></input>
               <span className="form-validation"></span>
             </div>  
           </div>
