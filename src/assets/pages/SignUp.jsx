@@ -25,7 +25,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://authservice-jdf-bvbxf7b5bqdndqhy.swedencentral-01.azurewebsites.net/auth/signup', {
+      const response = await fetch('https://authservice-jdf-bvbxf7b5bqdndqhy.swedencentral-01.azurewebsites.net/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
