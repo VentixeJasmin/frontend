@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PiCalendarDots } from "react-icons/pi";
 import { Link } from 'react-router-dom';
+import { ENDPOINTS } from '../services/api/endpoints';
 
 
 const EventCard = ({event}) => {
@@ -10,11 +11,9 @@ const EventCard = ({event}) => {
 
      const [venue, setVenue] = useState ([])
       
-        const venueUrl = "https://venueservice-jdf-azc2b5duepaygrfr.swedencentral-01.azurewebsites.net/api/Venues/"
-
-    
+ 
         const getVenue = async () => {
-          const res = await fetch (venueUrl + venueId)
+          const res = await fetch (ENDPOINTS.VENUES.GET + venueId)
       
           if (res.ok) {
             const data = await res.json() 

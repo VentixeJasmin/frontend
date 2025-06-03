@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { PiPlus } from "react-icons/pi";
 import VenueCard from '../components/VenueCard';
+import { ENDPOINTS } from '../services/api/endpoints';
 
 const Venues = () => {
   const [venues, setVenues] = useState ([])
   
-    const url = "https://venueservice-jdf-azc2b5duepaygrfr.swedencentral-01.azurewebsites.net/api/Venues/"
-  
     const getVenues = async () => {
-      const res = await fetch (url)
+      const res = await fetch (ENDPOINTS.VENUES.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 

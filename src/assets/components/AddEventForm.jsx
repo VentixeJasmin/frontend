@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
+import { ENDPOINTS } from '../services/api/endpoints';
 
 const AddEventForm = () => {
 
@@ -12,12 +13,10 @@ const AddEventForm = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const url = "https://eventservice-jdf-fjhvgdfdhsdvetdw.swedencentral-01.azurewebsites.net/api/Events/form-data";
-
     const getForm = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch(url);
+            const res = await fetch(ENDPOINTS.EVENTS.GET_FORMDATA);
 
             if (res.ok) {
             const data = await res.json() 

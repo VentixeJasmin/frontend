@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
+import { ENDPOINTS } from '../services/api/endpoints';
 
 const SignIn = () => {
   const navigate = useNavigate();  
@@ -23,7 +24,7 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://authservice-jasmin-h9euf4dpghc5d7a8.swedencentral-01.azurewebsites.net/api/auth/signin', {
+      const response = await fetch(ENDPOINTS.AUTH.SIGNIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,8 +74,8 @@ const SignIn = () => {
             </div>  
           </div>
           <div className="form-input-checkbox-group">
-            <input type="checkbox" name="remember-me" checked={formData.rememberMe} onChange={handleChange}></input>
-            <label htmlFor="remember-me">Remember me</label>
+            <input type="checkbox" name="rememberMe" checked={formData.rememberMe} onChange={handleChange}></input>
+            <label htmlFor="rememberMe">Remember me</label>
           </div>
           <button type="submit" className="btn btn-blue btn-large">Sign In</button>
         </form>

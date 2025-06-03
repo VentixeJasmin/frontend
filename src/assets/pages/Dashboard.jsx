@@ -7,19 +7,16 @@ import FactCard from '../components/FactCard';
 import { PiPlus } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 import { PiCalendarDot } from "react-icons/pi";
+import { ENDPOINTS } from '../services/api/endpoints';
 
 
 const Dashboard = () => {
 
     const [events, setEvents] = useState ([])
     const [venues, setVenues] = useState ([])
-  
-    const eventUrl = "https://eventservice-jdf-fjhvgdfdhsdvetdw.swedencentral-01.azurewebsites.net/api/Events/"
-    const venueUrl = "https://venueservice-jdf-azc2b5duepaygrfr.swedencentral-01.azurewebsites.net/api/Venues/"
 
-  
     const getEvents = async () => {
-      const res = await fetch (eventUrl)
+      const res = await fetch (ENDPOINTS.EVENTS.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 
@@ -28,7 +25,7 @@ const Dashboard = () => {
     }
 
     const getVenues = async () => {
-      const res = await fetch (venueUrl)
+      const res = await fetch (ENDPOINTS.VENUES.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 

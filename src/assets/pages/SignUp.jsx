@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
+import { ENDPOINTS } from '../services/api/endpoints';
 
 const SignUp = () => {
   const navigate = useNavigate();  
@@ -26,7 +27,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://authservice-jasmin-h9euf4dpghc5d7a8.swedencentral-01.azurewebsites.net/api/auth/signup', {
+      const response = await fetch(ENDPOINTS.AUTH.SIGNUP, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
+import { ENDPOINTS } from '../services/api/endpoints';
 
 const Verify = () => {
   const navigate = useNavigate(); 
@@ -33,7 +34,7 @@ const handleChange = (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://verificationservice-jdf-e5d8azctc7fnapca.swedencentral-01.azurewebsites.net/api/verification/verify', {
+      const response = await fetch(ENDPOINTS.VERIFICATION.VERIFY, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react'
 import EventCard from '../components/EventCard'
 import { Link } from 'react-router-dom';
 import { PiPlus } from "react-icons/pi";
+import { ENDPOINTS } from '../services/api/endpoints';
 
 
 const Events = () => {
   const [events, setEvents] = useState ([])
 
-  const url = "https://eventservice-jdf-fjhvgdfdhsdvetdw.swedencentral-01.azurewebsites.net/api/Events/"
-
   const getEvents = async () => {
-    const res = await fetch (url)
+    const res = await fetch (ENDPOINTS.EVENTS.GET_ALL)
 
     if (res.ok) {
       const data = await res.json() 
