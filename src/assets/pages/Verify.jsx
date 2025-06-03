@@ -33,7 +33,7 @@ const handleChange = (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://emailservice-jdf-aubrd7bneyemb3ep.swedencentral-01.azurewebsites.net/api/verification/verify', {
+      const response = await fetch('https://verificationservice-jdf-e5d8azctc7fnapca.swedencentral-01.azurewebsites.net/api/verification/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

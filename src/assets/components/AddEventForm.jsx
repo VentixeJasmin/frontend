@@ -12,7 +12,7 @@ const AddEventForm = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const url = "https://localhost:7234/api/Events/form-data";
+    const url = "https://eventservice-jdf-fjhvgdfdhsdvetdw.swedencentral-01.azurewebsites.net/api/Events/form-data";
 
     const getForm = async () => {
         try {

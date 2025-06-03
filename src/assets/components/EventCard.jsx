@@ -10,7 +10,7 @@ const EventCard = ({event}) => {
 
      const [venue, setVenue] = useState ([])
       
-        const venueUrl = "https://localhost:7095/api/Venues/"
+        const venueUrl = "https://venueservice-jdf-azc2b5duepaygrfr.swedencentral-01.azurewebsites.net/api/Venues/"
 
     
         const getVenue = async () => {

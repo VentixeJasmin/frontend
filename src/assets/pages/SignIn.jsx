@@ -23,7 +23,7 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('authservice-jasmin-h9euf4dpghc5d7a8.swedencentral-01.azurewebsites.net/api/auth/signin', {
+      const response = await fetch('https://authservice-jasmin-h9euf4dpghc5d7a8.swedencentral-01.azurewebsites.net/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const SignIn = () => {
       if (response.ok) {
         const result = await response.json(); 
         console.log('Sign in successful:', result);
-        navigate("/verify"); 
+        navigate("/dashboard"); 
       }
       else {
         const errorData = await response.json();
