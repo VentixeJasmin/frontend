@@ -16,8 +16,9 @@ import Venues from './assets/pages/Venues'
 import VenueDetails from './assets/pages/VenueDetails'
 import AddEvent from './assets/pages/AddEvent'
 import AddVenue from './assets/pages/AddVenue'
-import { AuthProvider } from "./AuthContext";
-
+import { AuthProvider } from './contexts/AuthContext'
+import ProtectedRoute from './assets/components/auth/ProtectedRoute'
+import PublicRoute from './assets/components/auth/PublicRoute'
 
 
 function App() {

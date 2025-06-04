@@ -1,3 +1,11 @@
+const AUTH_SERVICE_URL = import.meta.env.VITE_AUTH_SERVICE_URL;
+const VERIFICATION_SERVICE_URL = import.meta.env.VITE_VERIFICATION_SERVICE_URL;
+const ORDER_SERVICE_URL = import.meta.env.VITE_ORDER_SERVICE_URL;
+const VENUE_SERVICE_URL = import.meta.env.VITE_VENUE_SERVICE_URL;
+const EVENT_SERVICE_URL = import.meta.env.VITE_EVENT_SERVICE_URL;
+const PROFILE_SERVICE_URL = import.meta.env.VITE_PROFILE_SERVICE_URL;
+
+
 export const ENDPOINTS = {
   AUTH: {
     SIGNIN: `${AUTH_SERVICE_URL}/api/auth/signin`,

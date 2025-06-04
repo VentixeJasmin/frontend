@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
-import { ENDPOINTS } from '../services/api/endpoints';
+import { ENDPOINTS } from '../../services/api/endpoints';
 
 const SignUp = () => {
   const navigate = useNavigate();  

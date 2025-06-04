@@ -7,7 +7,7 @@ import FactCard from '../components/FactCard';
 import { PiPlus } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 import { PiCalendarDot } from "react-icons/pi";
-import { ENDPOINTS } from '../services/api/endpoints';
+import { ENDPOINTS } from '../../services/api/endpoints';
 
 
 const Dashboard = () => {

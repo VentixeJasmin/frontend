@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import EventCard from '../components/EventCard'
 import { Link } from 'react-router-dom';
 import { PiPlus } from "react-icons/pi";
-import { ENDPOINTS } from '../services/api/endpoints';
+import { ENDPOINTS } from '../../services/api/endpoints';
 
 
 const Events = () => {

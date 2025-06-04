@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
-import { ENDPOINTS } from '../services/api/endpoints';
+import { ENDPOINTS } from '../../services/api/endpoints';
 
 const Verify = () => {
   const navigate = useNavigate(); 

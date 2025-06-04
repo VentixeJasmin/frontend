@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PiCalendarDots } from "react-icons/pi";
 import { Link } from 'react-router-dom';
-import { ENDPOINTS } from '../services/api/endpoints';
+import { ENDPOINTS } from '../../services/api/endpoints';
 
 
 const EventCard = ({event}) => {
