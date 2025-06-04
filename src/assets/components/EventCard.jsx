@@ -13,7 +13,9 @@ const EventCard = ({event}) => {
       
  
         const getVenue = async () => {
-          const res = await fetch (ENDPOINTS.VENUES.GET + venueId)
+          const res = await fetch (ENDPOINTS.VENUES.GET + venueId, {
+            credentials: "include",
+          })
       
           if (res.ok) {
             const data = await res.json() 

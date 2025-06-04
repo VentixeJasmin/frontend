@@ -29,6 +29,7 @@ const SignUp = () => {
     try {
       const response = await fetch(ENDPOINTS.AUTH.SIGNUP, {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },

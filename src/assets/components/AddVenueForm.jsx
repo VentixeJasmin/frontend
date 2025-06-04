@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
+import { ENDPOINTS } from '../../services/api/endpoints';
 
 const AddVenueForm = () => {
     const navigate = useNavigate();  
@@ -27,8 +28,9 @@ const AddVenueForm = () => {
         e.preventDefault();
 
     try {
-      const response = await fetch('XXX/api/auth/signup', {
+      const response = await fetch(ENDPOINTS.AUTH.SIGNUP, {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },

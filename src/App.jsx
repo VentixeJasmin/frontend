@@ -16,13 +16,15 @@ import Venues from './assets/pages/Venues'
 import VenueDetails from './assets/pages/VenueDetails'
 import AddEvent from './assets/pages/AddEvent'
 import AddVenue from './assets/pages/AddVenue'
+import { AuthProvider } from "./AuthContext";
 
 
 
 function App() {
 
   return (
-    <BrowserRouter>   
+    <AuthProvider>
+      <BrowserRouter>   
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
@@ -30,24 +32,31 @@ function App() {
       <Routes> 
         <Route element={<CenterLayout/>}>
           <Route index element={<Start />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="verify" element={<Verify />} />
+          <Route path="signin" element={<PublicRoute><SignIn /></PublicRoute>} />
+          <Route path="signup" element={<PublicRoute><SignUp /></PublicRoute>} />
+          <Route path="verify" element={<PublicRoute><Verify /></PublicRoute>} />
         </Route>
-        <Route element={<GridLayout/>}>
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={
+              <ProtectedRoute>
+                <GridLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/events/addEvent" element={<AddEvent />} />
-            <Route path="/venues" element={<Venues />}/>
+            <Route path="/venues" element={<Venues />} />
             <Route path="/venues/:id" element={<VenueDetails />} />
             <Route path="/venues/addVenue" element={<AddVenue />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<OrderDetails />} />
-        </Route>
+          </Route>
       </Routes>
       
     </BrowserRouter>
+  </AuthProvider>
+    
   )
 }
 

@@ -26,6 +26,7 @@ const SignIn = () => {
     try {
       const response = await fetch(ENDPOINTS.AUTH.SIGNIN, {
         method: 'POST',
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },

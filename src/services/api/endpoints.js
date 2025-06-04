@@ -4,6 +4,7 @@ export const ENDPOINTS = {
     SIGNUP: `${AUTH_SERVICE_URL}/api/auth/signup`,
     SIGNOUT: `${AUTH_SERVICE_URL}/api/auth/signout`,
     CONFIRM_EMAIL: `${AUTH_SERVICE_URL}/api/auth/confirm-email`,
+    ME: `${AUTH_SERVICE_URL}/api/auth/me`,
   },
   VERIFICATION: {
     SEND_VERIFICATION: `${VERIFICATION_SERVICE_URL}/api/verfication/sendverification`,

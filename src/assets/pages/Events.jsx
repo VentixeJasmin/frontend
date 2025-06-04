@@ -9,7 +9,9 @@ const Events = () => {
   const [events, setEvents] = useState ([])
 
   const getEvents = async () => {
-    const res = await fetch (ENDPOINTS.EVENTS.GET_ALL)
+    const res = await fetch (ENDPOINTS.EVENTS.GET_ALL, {
+      credentials: "include",
+    })
 
     if (res.ok) {
       const data = await res.json() 
