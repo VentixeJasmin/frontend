@@ -16,9 +16,7 @@ const AddEventForm = () => {
     const getForm = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch(ENDPOINTS.EVENTS.GET_FORMDATA, {
-                credentials: "include",
-            });
+            const res = await fetch(ENDPOINTS.EVENTS.GET_FORMDATA);
 
             if (res.ok) {
             const data = await res.json() 

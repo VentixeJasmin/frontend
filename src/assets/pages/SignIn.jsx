@@ -26,7 +26,6 @@ const SignIn = () => {
     try {
       const response = await fetch(ENDPOINTS.AUTH.SIGNIN, {
         method: 'POST',
-        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },
@@ -35,6 +34,7 @@ const SignIn = () => {
 
       if (response.ok) {
         const result = await response.json(); 
+        localStorage.setItem('authToken', result.token);
         console.log('Sign in successful:', result);
         navigate("/dashboard"); 
       }

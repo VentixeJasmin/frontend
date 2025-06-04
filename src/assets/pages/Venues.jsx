@@ -8,9 +8,7 @@ const Venues = () => {
   const [venues, setVenues] = useState ([])
   
     const getVenues = async () => {
-      const res = await fetch (ENDPOINTS.VENUES.GET_ALL, {
-        credentials: "include",
-      })
+      const res = await fetch (ENDPOINTS.VENUES.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 

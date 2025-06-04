@@ -36,7 +36,6 @@ const handleChange = (e) => {
     try {
       const response = await fetch(ENDPOINTS.VERIFICATION.VERIFY, {
         method: 'POST',
-        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
         },

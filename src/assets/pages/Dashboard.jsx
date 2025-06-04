@@ -16,9 +16,7 @@ const Dashboard = () => {
     const [venues, setVenues] = useState ([])
 
     const getEvents = async () => {
-      const res = await fetch (ENDPOINTS.EVENTS.GET_ALL, {
-        credentials: "include",
-      })
+      const res = await fetch (ENDPOINTS.EVENTS.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 
@@ -27,9 +25,7 @@ const Dashboard = () => {
     }
 
     const getVenues = async () => {
-      const res = await fetch (ENDPOINTS.VENUES.GET_ALL, {
-        credentials: "include",
-      })
+      const res = await fetch (ENDPOINTS.VENUES.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 
