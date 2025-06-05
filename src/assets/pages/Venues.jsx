@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PiPlus } from "react-icons/pi";
 import VenueCard from '../components/VenueCard';
 import { ENDPOINTS } from '../../services/api/endpoints';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Venues = () => {
   const [venues, setVenues] = useState ([])

@@ -26,6 +26,7 @@
     --clr-primary-50: #FCD3FE;
     --clr-primary-90: #F589FA;
     --clr-primary-100: #F26CF9;
+    --clr-primary-150: #f200ff;
 
     --clr-yellow-90: #FFEFC3;
     --clr-yellow-100: #FFCA39;
@@ -669,12 +670,11 @@ h6 {
             color: var(--clr-grey-60);
         }
     }
+}
 
-    span {
-        position: absolute; 
-    }
-
-
+.form-validation {
+    padding-inline: .5rem;
+    color: var(--clr-primary-150)
 }
 
 .form-input-checkbox-group {

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
 import { ENDPOINTS } from '../../services/api/endpoints';
+import { useAuth } from '../../contexts/AuthContext';
 
 const SignIn = () => {
   const navigate = useNavigate();  
