@@ -33,7 +33,7 @@ export const ENDPOINTS = {
   VENUES: {
     GET_FORMDATA: `${VENUE_SERVICE_URL}/api/venues/form-data`,
     CREATE: `${VENUE_SERVICE_URL}/api/venues`,
-    GET: `${VENUE_SERVICE_URL}/api/venues{id}`,
+    GET: `${VENUE_SERVICE_URL}/api/venues`,
     GET_ALL: `${VENUE_SERVICE_URL}/api/venues`,
   },
   EVENTS: {

@@ -6,9 +6,10 @@ import { ENDPOINTS } from '../../services/api/endpoints';
 
 const Venues = () => {
   const [venues, setVenues] = useState ([])
-  
+  const { authenticatedFetch } = useAuth();
+
     const getVenues = async () => {
-      const res = await fetch (ENDPOINTS.VENUES.GET_ALL)
+      const res = await authenticatedFetch (ENDPOINTS.VENUES.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 

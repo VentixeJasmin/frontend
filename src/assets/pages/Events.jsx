@@ -7,9 +7,10 @@ import { ENDPOINTS } from '../../services/api/endpoints';
 
 const Events = () => {
   const [events, setEvents] = useState ([])
+  const { authenticatedFetch } = useAuth();
 
   const getEvents = async () => {
-    const res = await fetch (ENDPOINTS.EVENTS.GET_ALL)
+    const res = await authenticatedFetch (ENDPOINTS.EVENTS.GET_ALL)
 
     if (res.ok) {
       const data = await res.json() 

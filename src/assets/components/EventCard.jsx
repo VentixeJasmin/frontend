@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { PiCalendarDots } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 import { ENDPOINTS } from '../../services/api/endpoints';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 const EventCard = ({event}) => {
@@ -9,11 +10,12 @@ const EventCard = ({event}) => {
     const eventDate = new Date(event.date); 
     const venueId = event.venueId
 
-     const [venue, setVenue] = useState ([])
+    const [venue, setVenue] = useState ([])
+     const { authenticatedFetch } = useAuth();
       
  
         const getVenue = async () => {
-          const res = await fetch (ENDPOINTS.VENUES.GET + venueId)
+          const res = await authenticatedFetch (`${ENDPOINTS.VENUES.GET}/${venueId}`)
       
           if (res.ok) {
             const data = await res.json() 

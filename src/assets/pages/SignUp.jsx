@@ -26,8 +26,10 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  const { authenticatedFetch } = useAuth();
+
     try {
-      const response = await fetch(ENDPOINTS.AUTH.SIGNUP, {
+      const response = await authenticatedFetch(ENDPOINTS.AUTH.SIGNUP, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

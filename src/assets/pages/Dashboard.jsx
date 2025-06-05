@@ -8,15 +8,17 @@ import { PiPlus } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 import { PiCalendarDot } from "react-icons/pi";
 import { ENDPOINTS } from '../../services/api/endpoints';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 const Dashboard = () => {
 
     const [events, setEvents] = useState ([])
     const [venues, setVenues] = useState ([])
+    const { user, authenticatedFetch } = useAuth();
 
     const getEvents = async () => {
-      const res = await fetch (ENDPOINTS.EVENTS.GET_ALL)
+      const res = await authenticatedFetch (ENDPOINTS.EVENTS.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 
@@ -25,7 +27,7 @@ const Dashboard = () => {
     }
 
     const getVenues = async () => {
-      const res = await fetch (ENDPOINTS.VENUES.GET_ALL)
+      const res = await authenticatedFetch (ENDPOINTS.VENUES.GET_ALL)
   
       if (res.ok) {
         const data = await res.json() 

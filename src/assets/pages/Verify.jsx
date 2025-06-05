@@ -33,8 +33,10 @@ const handleChange = (e) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  const { authenticatedFetch } = useAuth();
+
     try {
-      const response = await fetch(ENDPOINTS.VERIFICATION.VERIFY, {
+      const response = await authenticatedFetch(ENDPOINTS.VERIFICATION.VERIFY, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
