@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
 import { ENDPOINTS } from '../../services/api/endpoints';
-import { useAuth } from '../../contexts/AuthContext';
 
 const Verify = () => {
   const navigate = useNavigate(); 
@@ -34,31 +33,49 @@ const handleChange = (e) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  const { authenticatedFetch } = useAuth();
-
     try {
-      const response = await authenticatedFetch(ENDPOINTS.VERIFICATION.VERIFY, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+    const response = await fetch(ENDPOINTS.VERIFICATION.VERIFY, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
 
-      if (response.ok) {
-        const result = await response.json(); 
+    //Debug additions from Claude AI 
+    if (response.ok) {
+      const contentType = response.headers.get('content-type');
+      
+      if (contentType && contentType.includes('application/json')) {
+        const result = await response.json();
         console.log('Verification successful:', result);
-        navigate("/dashboard"); 
+        
+        // Store token if available
+        if (result && result.token) {
+          localStorage.setItem('authToken', result.token);
+        }
+        
+        navigate("/dashboard");
+      } else {
+        console.error('Expected JSON response but got:', contentType);
       }
-      else {
+    } else {
+      // Handle non-200 responses safely
+      const contentType = response.headers.get('content-type');
+      
+      if (contentType && contentType.includes('application/json')) {
         const errorData = await response.json();
         console.error('Verification failed:', errorData);
+      } else {
+        // For 404 or other HTML responses
+        const errorText = await response.text();
+        console.error('Verification failed with status:', response.status, errorText);
       }
     }
-    catch (error) {
-      console.error('Error:', error);
-    }
-  };
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
   return (
     <div className="center-wrapper">

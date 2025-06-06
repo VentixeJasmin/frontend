@@ -3,29 +3,34 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
 import { ENDPOINTS } from '../../services/api/endpoints';
 import { useAuth } from '../../contexts/AuthContext';
+import { useFormValidation } from '../../hooks/useFormValidation';
 
 const SignIn = () => {
   const navigate = useNavigate();  
+  const { authenticatedFetch, login } = useAuth();
 
-  const [formData , setFormData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
-  }); 
+  const {
+      formData,
+      errors,
+      handleChange,
+      handleBlur,
+      validateEntireForm
+    } = useFormValidation({
+      email: '',
+      password: '',
+      rememberMe: false
+    })
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target; 
-    setFormData(prev => ({
-      ...prev, 
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
+    
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-  const { authenticatedFetch } = useAuth();
 
+    if (!validateEntireForm()) {
+      return
+    }
+    console.log("Form valid.")
+    
     try {
       const response = await authenticatedFetch(ENDPOINTS.AUTH.SIGNIN, {
         method: 'POST',
@@ -39,7 +44,8 @@ const SignIn = () => {
         const result = await response.json(); 
         localStorage.setItem('authToken', result.token);
         console.log('Sign in successful:', result);
-        navigate("/dashboard"); 
+        await login(result.token);
+        await navigate("/dashboard"); 
       }
       else {
         const errorData = await response.json();

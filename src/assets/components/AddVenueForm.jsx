@@ -2,56 +2,62 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
 import { ENDPOINTS } from '../../services/api/endpoints';
+import { useAuth } from '../../contexts/AuthContext';
+import { useFormValidation } from '../../hooks/useFormValidation';
 
 const AddVenueForm = () => {
-    const navigate = useNavigate();  
+  const navigate = useNavigate();  
+  const { authenticatedFetch } = useAuth();  
 
-    const [formData , setFormData] = useState({
-        title: '',
-        venueType: '',
-        description: '',
-        capacity: '',
-        streetAddress: '',
-        postCode: '',
-        city: '',
-        mapUrl: ''
-    }); 
-
-    const handleChange = (e) => {
-    setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-    });
-    };
+  const {
+      formData,
+      errors,
+      handleChange,
+      handleBlur,
+      validateEntireForm
+    } = useFormValidation({
+      title: '',
+      venueType: '',
+      description: '',
+      capacity: '',
+      streetAddress: '',
+      postCode: '',
+      city: '',
+      mapUrl: ''
+    })
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+      e.preventDefault();
 
-    const { authenticatedFetch } = useAuth();
-
-    try {
-      const response = await authenticatedFetch(ENDPOINTS.AUTH.SIGNUP, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        const result = await response.json(); 
-        console.log('Venue added successfully:', result);
-        navigate("/events"); 
+      if (!validateEntireForm()) {
+        return
       }
-      else {
-        const errorData = await response.json();
-        console.error('Adding venue failed:', errorData);
+
+      console.log("Form valid.")
+      
+      try {
+        const response = await authenticatedFetch(ENDPOINTS.VENUES.CREATE, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          const result = await response.json(); 
+          console.log('Venue added successfully:', result);
+          navigate("/venues"); 
+        }
+        else {
+          const errorData = await response.json();
+          console.error('Adding venue failed:', errorData);
+        }
       }
-    }
-    catch (error) {
-      console.error('Error:', error);
-    }
-  };
+      catch (error) {
+        console.error('Error:', error);
+      }
+    };
 
   return (
     <div className="form-container add-venue-form-container">
@@ -67,28 +73,28 @@ const AddVenueForm = () => {
           <div className="form-group">
             <label htmlFor="title">Venue Name</label>
             <div className="form-input-group">
-              <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Enter venue name"></input>
-              <span className="form-validation"></span>
+              <input type="text" name="title" value={formData.title} onChange={handleChange} onBlur={handleBlur} placeholder="Enter venue name" required></input>
+              {errors.title && <p className="form-validation">{errors.title}</p>}
             </div>  
           </div>
           <div className="form-group">
             <label htmlFor="venueType">Venue Type</label>
             <div className="form-input-group">
-              <input type="text" name="venueType" value={formData.venueType} onChange={handleChange} placeholder="Ex. Arena"></input>
-              <span className="form-validation"></span>
+              <input type="text" name="venueType" value={formData.venueType} onChange={handleChange} onBlur={handleBlur} placeholder="Ex. Arena" required></input>
+              {errors.venueType && <p className="form-validation">{errors.venueType}</p>}
             </div>  
           </div>
           <div className="form-group">
             <label htmlFor="description">Description</label>
             <div className="form-input-group">
-              <input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Describe the venue"></input>
+              <input type="text" name="description" value={formData.description} onChange={handleChange} onBlur={handleBlur} placeholder="Describe the venue"></input>
             </div>  
           </div>
           <div className="form-group">
             <label htmlFor="capacity">Venue capacity</label>
             <div className="form-input-group">
-              <input type="text" name="capacity" value={formData.capacity} onChange={handleChange} placeholder="Enter number of possible quests"></input>
-              <span className="form-validation"></span>
+              <input type="text" name="capacity" value={formData.capacity} onChange={handleChange} onBlur={handleBlur} placeholder="Enter number of possible quests" required></input>
+              {errors.capacity && <p className="form-validation">{errors.capacity}</p>}
             </div>  
           </div>
           <div className="form-group">

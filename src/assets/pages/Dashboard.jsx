@@ -55,14 +55,14 @@ const Dashboard = () => {
             <FaRegCheckSquare />
           </div>
           <p>Total Bookings</p>
-          <h6>987</h6>
+          <h6>0</h6>
         </div>
         <div className="card card-facts">
           <div className="btn-pink round-icon-holder">
             <LuTicket />
           </div>
           <p>Tickets Sold</p>
-          <h6>1400</h6>
+          <h6>0</h6>
         </div>
       </div>
       <div className="upcoming-events-container">

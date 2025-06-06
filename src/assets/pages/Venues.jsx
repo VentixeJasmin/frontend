@@ -28,7 +28,7 @@ const Venues = () => {
     <div className="venues-page">
       <div className="venues-header">
         <div>
-          <h2>Available venues</h2>
+          <h4>Available venues</h4>
         </div>
         <Link to="/venues/AddVenue">
           <button className="btn btn-pink btn-medium">
@@ -38,10 +38,9 @@ const Venues = () => {
         </Link>
       </div>
       <div className="venues-container"> 
-        <div className="venue-table-header"></div>
         {
           venues.map(venue => (
-            <VenueCard key={venue.id} event={venue} />
+            <VenueCard key={venue.id} venue={venue} />
           ))
         }
       </div>

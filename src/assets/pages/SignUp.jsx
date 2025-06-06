@@ -1,58 +1,34 @@
-import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { PiX } from "react-icons/pi";
 import { ENDPOINTS } from '../../services/api/endpoints';
-import { validateForm, validateSingleField } from '../../utils/validation';
 import { useAuth } from '../../contexts/AuthContext';
+import { useFormValidation } from '../../hooks/useFormValidation';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const { authenticatedFetch } = useAuth();  
 
-  const [formData , setFormData] = useState({
+  const {
+    formData,
+    errors,
+    handleChange,
+    handleBlur,
+    validateEntireForm
+  } = useFormValidation({
     email: '',
     firstName: '',
     lastName: '',
     password: '',
     confirmPassword: '',
     acceptTerms: false
-  }); 
-
-  const [ errors, setErrors ] = useState ({});
-  const getRequiredFields = () => {
-    const requiredInputs = document.querySelectorAll('input[required], select[required], textarea[required]');
-    return Array.from(requiredInputs).map(input => input.name);
-  }
- 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target; 
-    setFormData(prev => ({
-      ...prev, 
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    const fieldError = validateSingleField(name, value, formData);
-    setErrors(prev => ({
-        ...prev,
-        [name]: fieldError
-    }));
-};
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-
-    const requiredFields = getRequiredFields()
-    const validationResult = validateForm(formData, requiredFields)
     
-    setErrors(validationResult.errors)
-    
-    if (!validationResult.isValid) {
+    if (!validateEntireForm()) {
       return
     }
-    
     console.log("Form valid.")
     try {
       const response = await authenticatedFetch(ENDPOINTS.AUTH.SIGNUP, {
@@ -76,7 +52,6 @@ const SignUp = () => {
     catch (error) {
       console.error('Error:', error);
     }
-    
   };
 
   return (

@@ -44,11 +44,36 @@ const validateAcceptTerms = (value) => {
     return '';
 }
 
+const validateSelect = (value) => {
+    if (!value || value === '') {
+        return "Please make a selection.";
+    }
+    return '';
+};
+
+const validatePrice = (value) => {
+    if (!value || value === '') {
+        return "Enter 0.00 if the event is free.";
+    }
+    return '';
+};
+
+const validateNumber = (value) => {
+    if (!isNaN) {
+        return "You must enter a number";
+    }
+    return '';
+};
+
 export const validateSingleField = (fieldName, value, formData = {}) => {
     const specialFields = {
         email: validateEmail,
         password: validatePassword,
-        acceptTerms: validateAcceptTerms
+        acceptTerms: validateAcceptTerms,
+        categoryId: validateSelect,
+        venueId: validateSelect,
+        price: validatePrice,
+        capacity: validateNumber
     };
 
     if (fieldName === 'confirmPassword') {

@@ -3,11 +3,20 @@ import { LuTicket } from "react-icons/lu";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { MdOutlineStadium } from "react-icons/md";
 import { PiSquaresFour } from "react-icons/pi";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { RxExit } from "react-icons/rx";
-
+import { useAuth } from '../../contexts/AuthContext';
 
 const Nav = () => {
+  const navigate = useNavigate();  
+  const { logout } = useAuth();
+
+  const handleSignout = async (e) => {
+    await logout(); 
+    navigate("/")
+}
+
+
   return (
     <div className="nav">
       <div>
@@ -66,11 +75,11 @@ const Nav = () => {
             </button>
         </div>
       </div>
-      <button className="btn btn-large btn-grey" id="btn-signout">
+      <button onClick={handleSignout} className="btn btn-large btn-grey" id="btn-signout">
         <RxExit />
         <p>Sign Out</p>
       </button>
-      <button className="btn btn-round btn-grey" id="btn-round-signout">
+      <button onClick={handleSignout} className="btn btn-round btn-grey" id="btn-round-signout">
         <RxExit />
       </button>
     </div>

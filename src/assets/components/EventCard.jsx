@@ -9,23 +9,32 @@ const EventCard = ({event}) => {
     //Got help from Claude AI with the following breaking down of the date:
     const eventDate = new Date(event.date); 
     const venueId = event.venueId
+    const [loading, setLoading] = useState(true);
 
     const [venue, setVenue] = useState ([])
-     const { authenticatedFetch } = useAuth();
+    const { authenticatedFetch } = useAuth();
       
  
-        const getVenue = async () => {
-          const res = await authenticatedFetch (`${ENDPOINTS.VENUES.GET}/${venueId}`)
-      
-          if (res.ok) {
-            const data = await res.json() 
-            setVenue(data)
-          }
+    const getVenue = async () => {
+        try {
+            setLoading(true);  // Set loading to true
+            const res = await authenticatedFetch(`${ENDPOINTS.VENUES.GET}/${venueId}`)
+
+            if (res.ok) {
+                const data = await res.json() 
+                console.log(data)
+                setVenue(data)
+            } 
+        } catch (error) {
+            console.error('Error fetching venue:', error);
+        } finally {
+            setLoading(false);  // Set loading to false
         }
+    }
       
         useEffect(() => {
           getVenue()
-        }, [])
+        }, [venueId])
 
     const formattedDate = eventDate.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -38,6 +47,10 @@ const EventCard = ({event}) => {
         minute: '2-digit',
         hour12: true
     })
+
+    if (loading) return <div>Loading venue details...</div>;
+    if (!venue) return <div>Venue not found.</div>;
+
 
   return (
     <div className="card event-card">

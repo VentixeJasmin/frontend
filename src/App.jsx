@@ -19,6 +19,7 @@ import AddVenue from './assets/pages/AddVenue'
 import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './assets/components/auth/ProtectedRoute'
 import PublicRoute from './assets/components/auth/PublicRoute'
+import Profile from './assets/pages/Profile'
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/venues/addVenue" element={<AddVenue />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<OrderDetails />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Route>
       </Routes>
       
