@@ -19,6 +19,7 @@ const getRequiredFieldsForPaymentMethod = (paymentMethodId) => {
     }
 };
 
+
 const BookEvent = () => {
     const { id } = useParams(); 
     const navigate = useNavigate();
