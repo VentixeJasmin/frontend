@@ -10,8 +10,8 @@ export const validateForm = (formData, requiredFields = []) => {
 }
 
 const validateField = (value) => {
-    if (!/^[A-Öa-ö\s\-]{2,}$/.test(value)){
-        return "Must be at least 2 letters.";
+    if (!/^.{2,}$/.test(value)){
+        return "Must be at least 2 characters.";
     }
     return '';
 }

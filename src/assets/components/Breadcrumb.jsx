@@ -9,8 +9,39 @@ const Breadcrumb = () => {
     const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
     //^Code from ChatGPT
 
+    // Function to check if a segment is likely an ID / code from Claude AI
+    const isId = (segment) => {
+        /^\d+$/.test(segment) || 
+           /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(segment) ||
+           /@/.test(segment);
+    };
+
+    // Function to get display name for breadcrumb  / code from Claude AI
+    const getDisplayName = (segment, index) => {
+        // If it's an ID, use the previous segment + "Details"
+        if (isId(segment)) {
+            const previousSegment = pathnames[index - 1];
+            if (previousSegment) {
+                return `${capitalizeFirstLetter(previousSegment.replace(/-/g, ' '))} Details`;
+            }
+            return 'Details';
+        }
+        
+        // Route mappings for better display names  / code from Claude AI
+        const routeMap = {
+            'events': 'Events',
+            'venues': 'Venues',
+            'orders': 'Orders',
+            'profile': 'Profile',
+            'AddEvent': 'Add Event',
+            'AddVenue': 'Add Venue'
+        };
+        
+        return routeMap[segment] || capitalizeFirstLetter(segment.replace(/-/g, ' '));
+    };
+
     const currentPageTitle = pathnames.length > 0 
-        ? capitalizeFirstLetter(pathnames[pathnames.length - 1].replace(/-/g, ' '))
+        ? getDisplayName(pathnames[pathnames.length - 1], pathnames.length - 1)
         : 'Dashboard';
         
         // ^Had help from Claude AI with getting a variable for the current page so I could use it in a h4. 

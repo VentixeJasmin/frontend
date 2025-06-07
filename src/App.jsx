@@ -20,6 +20,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './assets/components/auth/ProtectedRoute'
 import PublicRoute from './assets/components/auth/PublicRoute'
 import Profile from './assets/pages/Profile'
+import OpenStart from './assets/pages/OpenStart'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       
       <Routes> 
         <Route element={<CenterLayout/>}>
+          
           <Route index element={<Start />} />
           <Route path="signin" element={<PublicRoute><SignIn /></PublicRoute>} />
           <Route path="signup" element={<PublicRoute><SignUp /></PublicRoute>} />
@@ -53,7 +55,7 @@ function App() {
             <Route path="/venues/addVenue" element={<AddVenue />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<OrderDetails />} />
-            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="profile/:email" element={<Profile />} />
           </Route>
       </Routes>
       

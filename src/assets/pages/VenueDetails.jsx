@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { ENDPOINTS } from '../../services/api/endpoints';
 import { useParams } from 'react-router-dom';
-import { getEmbedUrl } from '../../utils/convertMapUrl'
+import { IoMdOpen } from "react-icons/io";
 
 const VenueDetails = () => {
   const { id } = useParams();
@@ -36,30 +36,21 @@ const VenueDetails = () => {
 
 
   return (
-    <div className="venue-details-page">
-      <div>
-        <h3>{venue.title}</h3>
+    <div className="venue-details-page details-page">
+      <div className="details-headline">
+        <h2>{venue.title}</h2>
       </div>
-      
-      <div className="google-map">
+      <div className="details-details">
+        <p><span className="semi-bold">Location: </span>{venue.streetAddress} {venue.postCode} {venue.city}</p>
+        <p><span className="semi-bold">About: </span>{venue.venueType} | {venue.description}</p>
+        <p><span className="semi-bold">Capacity: </span>{venue.capacity}</p>
         {venue.mapUrl && (
-          <div className="map-container">
-              <iframe
-                  src={getEmbedUrl(venue.mapUrl)}
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  title={`Map of ${venue.title}`}
-              />
+          <div>
+            <a href={venue.mapUrl} target="_blank">View map <IoMdOpen /> </a>
           </div>
-      )}
+        )}
+        
       </div>
-      <p className="title-text light location-text">Location: {venue.streetAddress} {venue.postCode} {venue.city}</p>
-      <p className="title-text description-text">About: {venue.description}</p>
-      <p className="title-text description-text">Type: {venue.venueType}</p>
-      <p className="title-text description-text">Capacity: {venue.capacity}</p>
     </div>
   )
 }

@@ -11,7 +11,7 @@ const Start = () => {
           </div>
           <div className="teaser">
             <h4>It's your party.</h4>
-            <h4>Handle everything in one place.</h4>
+            <h4>Handle it all in one place.</h4>
           </div>
           <div className="button-container">
             <a href="/SignIn">
@@ -19,10 +19,14 @@ const Start = () => {
             </a>
             <a href="/SignUp">
               <button className="btn btn-pink btn-large">Sign Up</button>
-            </a>
+            </a> 
+          </div>
+          <div className="teaser-desktop">
+              <h4>It's your party.</h4>
+              <h4>Handle everything in one place.</h4>
           </div>
         </div>
-    </div>
+    </div> 
   )
 }
 

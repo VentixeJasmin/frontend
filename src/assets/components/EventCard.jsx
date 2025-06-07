@@ -55,7 +55,7 @@ const EventCard = ({event}) => {
   return (
     <div className="card event-card">
         <div className="event-card-image">
-        <img src={`${event.eventImagePath}`} alt="Event image." />
+            <img src={`${event.eventImagePath}`} alt="Event image." />
         </div>
         <div className="event-card-info">
         <p className="title-text semi-bold event-title-text">{event.title}</p>
