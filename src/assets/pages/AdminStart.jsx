@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 
-const Start = () => {
+const AdminStart = () => {
   return (
     <div className="center-wrapper">
       <div className="headline-container">
@@ -30,4 +30,4 @@ const Start = () => {
   )
 }
 
-export default Start
+export default AdminStart

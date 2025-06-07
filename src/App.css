@@ -167,6 +167,16 @@ h6 {
     } 
 }
 
+.open-wrapper {
+    height: 100dvh;
+    width: 100dvw;
+    display: grid; 
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 1rem; 
+    padding: 1rem; 
+}
+
 
 /* Buttons */
 .btn {

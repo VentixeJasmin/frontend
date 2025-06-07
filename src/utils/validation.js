@@ -65,6 +65,34 @@ const validateNumber = (value) => {
     return '';
 };
 
+const validatePhoneNumber = (value) => {
+    if (!/^(\+|00)?[1-9][\d\s\-\(\)]{7,17}$/.test(value)){
+        return "You must enter a valid phone number.";
+    }
+    return '';
+};
+
+const validateCreditCardNumber = (value) => {
+    if (!/^\d{13,19}$/.test(value)){
+        return "You must enter a valid credit card number.";
+    }
+    return '';
+};
+
+const validateExpires = (value) => {
+    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(value)){
+        return "You must enter a valid expiration date (MM/YY)";
+    }
+    return '';
+};
+
+const validateCVV = (value) => {
+    if (!/^\d{3,4}$/.test(value)){
+        return "You must enter a valid CVV code (3-4 digits).";
+    }
+    return '';
+};
+
 export const validateSingleField = (fieldName, value, formData = {}) => {
     const specialFields = {
         email: validateEmail,
@@ -73,7 +101,13 @@ export const validateSingleField = (fieldName, value, formData = {}) => {
         categoryId: validateSelect,
         venueId: validateSelect,
         price: validatePrice,
-        capacity: validateNumber
+        capacity: validateNumber,
+        quantity: validateNumber,
+        paymentMethodId: validateSelect,
+        phoneNumber: validatePhoneNumber, 
+        creditCardNumber: validateCreditCardNumber,
+        expires: validateExpires,
+        CVV: validateCVV
     };
 
     if (fieldName === 'confirmPassword') {

@@ -5,7 +5,7 @@ import CenterLayout from './assets/layouts/CenterLayout'
 import GridLayout from './assets/layouts/GridLayout'
 import Events from './assets/pages/Events'
 import EventDetails from './assets/pages/EventDetails'
-import Start from './assets/pages/Start'
+import AdminStart from './assets/pages/AdminStart'
 import SignIn from './assets/pages/SignIn'
 import SignUp from './assets/pages/SignUp'
 import Verify from './assets/pages/Verify'
@@ -21,6 +21,9 @@ import ProtectedRoute from './assets/components/auth/ProtectedRoute'
 import PublicRoute from './assets/components/auth/PublicRoute'
 import Profile from './assets/pages/Profile'
 import OpenStart from './assets/pages/OpenStart'
+import OpenEventDetails from './assets/pages/OpenEventDetails'
+import OpenLayout from './assets/layouts/OpenLayout'
+import BookEvent from './assets/pages/BookEvent'
 
 
 function App() {
@@ -33,9 +36,13 @@ function App() {
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
       
       <Routes> 
+        <Route element={<OpenLayout/>}>
+          <Route index element={<OpenStart />} />
+          <Route path=":id" element={<OpenEventDetails />} />
+          <Route path="book/:id" element={<BookEvent />} />
+        </Route>
         <Route element={<CenterLayout/>}>
-          
-          <Route index element={<Start />} />
+          <Route path="admin" element={<PublicRoute><AdminStart /></PublicRoute>} />
           <Route path="signin" element={<PublicRoute><SignIn /></PublicRoute>} />
           <Route path="signup" element={<PublicRoute><SignUp /></PublicRoute>} />
           <Route path="verify" element={<PublicRoute><Verify /></PublicRoute>} />
