@@ -44,36 +44,40 @@ const handleChange = (e) => {
 
     //Debug additions from Claude AI 
     if (response.ok) {
-      const contentType = response.headers.get('content-type');
+      const result = await response.json();
+      console.log('Verification successful:', result);
       
-      if (contentType && contentType.includes('application/json')) {
-        const result = await response.json();
-        console.log('Verification successful:', result);
-        
-        // Store token if available
-        if (result && result.token) {
-          localStorage.setItem('authToken', result.token);
-        }
-        
+      // Store token if available - the token is directly in the result
+      if (result && result.token) {
+        localStorage.setItem('authToken', result.token);
         navigate("/dashboard");
       } else {
-        console.error('Expected JSON response but got:', contentType);
+        console.error('No token received in response:', result);
       }
     } else {
-      // Handle non-200 responses safely
+      // Handle non-200 responses
       const contentType = response.headers.get('content-type');
       
       if (contentType && contentType.includes('application/json')) {
         const errorData = await response.json();
         console.error('Verification failed:', errorData);
+        return (
+          <div>
+            Verification failed. 
+          </div>
+        )
       } else {
-        // For 404 or other HTML responses
         const errorText = await response.text();
         console.error('Verification failed with status:', response.status, errorText);
       }
     }
   } catch (error) {
     console.error('Error:', error);
+    return (
+          <div>
+            Verification failed. 
+          </div>
+        )
   }
 };
 

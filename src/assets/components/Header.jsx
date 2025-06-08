@@ -8,6 +8,7 @@ import { MdOutlineStadium } from "react-icons/md";
 import { PiSquaresFour } from "react-icons/pi";
 import { NavLink, useNavigate, Link } from 'react-router-dom';
 
+
 const Header = () => {
 //Had Claude AI generate most of the code for the dropdown menu for me 
 
@@ -37,7 +38,7 @@ const Header = () => {
     <div className="header">
       <div className="logo-holder-mobile">
         <a href="/dashboard">
-          <img src="public/images/logo-icon.svg" alt="Ventixe logo." />
+          <img src="/images/logo-icon.svg" alt="Ventixe logo." />
         </a>
       </div>
       <div>

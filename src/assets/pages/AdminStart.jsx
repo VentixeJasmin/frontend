@@ -6,7 +6,7 @@ const AdminStart = () => {
     <div className="center-wrapper">
       <div className="headline-container">
           <div className="headline">
-            <img className="headline-logo" src="public\images\logo-icon.svg"></img>
+            <img className="headline-logo" src="/images/logo-icon.svg"></img>
             <h1>Ventixe</h1>
           </div>
           <div className="teaser">

@@ -22,8 +22,8 @@ const Nav = () => {
       <div>
         <div className="logo-holder">
           <a href="/dashboard">
-            <img src="public/images/logo-name.svg" id="logo-text"></img>
-            <img src="public/images/logo-icon.svg" id="logo-icon"></img>
+            <img src="/images/logo-name.svg" id="logo-text"></img>
+            <img src="/images/logo-icon.svg" id="logo-icon"></img>
           </a>
         </div>
         <ul className="nav-list">
