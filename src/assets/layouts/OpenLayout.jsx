@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import OpenHeader from '../components/Openheader'
+import OpenHeader from '../components/OpenHeader'
 import OpenFooter from '../components/OpenFooter'
 
 
