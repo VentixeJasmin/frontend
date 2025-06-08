@@ -1,12 +1,17 @@
-# React + Vite
+Ventixe Event Management System 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend application created with React + Vite.
+   - Features:
+       - Public startpage displaying events and the option to view details and order tickets.
+       - Admin portal with options to sign in and sign up
+           - Features:
+             - View events, add events
+             - View venues, add venues
+             - View orders
+             - View stats for number of venues, number ofo rders and number of tickets sold
+  - Issues (some of the known issues)
+    - Breadcrumb isn't always displaying well formatted names and paths
+    - Loading is sometimes very slow
+    - There is no way to add pictures to events (I didn't have time to solve the issues with uploading).
+    - The purchasing of tickets isn't actually functioning, it's more of a placeholder for a secure payment solution.
+   
