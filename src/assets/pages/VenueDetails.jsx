@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { ENDPOINTS } from '../../services/api/endpoints';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { IoMdOpen } from "react-icons/io";
 
 const VenueDetails = () => {
@@ -50,6 +50,11 @@ const VenueDetails = () => {
           </div>
         )}
         
+      </div>
+      <div className="center-div">
+        <Link to="/venues">
+            <button className="btn btn-large btn-pink">Go Back</button>
+        </Link>
       </div>
     </div>
   )

@@ -15,7 +15,9 @@ const Dashboard = () => {
 
     const [events, setEvents] = useState ([])
     const [venues, setVenues] = useState ([])
-    const { user, authenticatedFetch } = useAuth();
+    const [orders, setOrders] = useState ([])
+    const { user, authenticatedFetch } = useAuth()
+    const [ticketsSold, setTicketsSold] = useState(0)
 
     const getEvents = async () => {
       const res = await authenticatedFetch (ENDPOINTS.EVENTS.GET_ALL)
@@ -34,11 +36,38 @@ const Dashboard = () => {
         setVenues(data)
       }
     }
+
+    const getOrders = async () => {
+      const res = await authenticatedFetch (ENDPOINTS.ORDERS.GET_ALL)
+      if (res.ok) {
+        const data = await res.json() 
+        setOrders(data)
+      }
+    }
+
+    const calculateTicketsSold = (ordersList) => {
+      let tickets = 0
+      ordersList.forEach(order => {
+        const quantity = order.quantity
+        tickets += quantity
+      })
+        setTicketsSold(tickets)
+    }
   
     useEffect(() => {
-      getEvents()
-      getVenues()
+      const fetchData = async () => {
+        await getEvents()
+        await getVenues()
+        await getOrders()
+      }
+      fetchData()
     }, [])
+
+    useEffect(() => {
+      if (orders.length > 0){
+        calculateTicketsSold(orders)
+      }
+    }, [orders])
   
   return (
     <div className="main dashboard-main">
@@ -55,14 +84,14 @@ const Dashboard = () => {
             <FaRegCheckSquare />
           </div>
           <p>Total Bookings</p>
-          <h6>0</h6>
+          <h6>{orders.length}</h6>
         </div>
         <div className="card card-facts">
           <div className="btn-pink round-icon-holder">
             <LuTicket />
           </div>
           <p>Tickets Sold</p>
-          <h6>0</h6>
+          <h6>{ticketsSold}</h6>
         </div>
       </div>
       <div className="upcoming-events-container">
@@ -78,9 +107,9 @@ const Dashboard = () => {
         </div>
         <div className="event-card-holder">
           {
-          events.slice(0, 2).map(event => (
-            <EventCard key={event.id} event={event} />
-          ))
+            events.slice(0, 2).map(event => (
+              <EventCard key={event.id} event={event} />
+            ))
           }
         </div>
         

@@ -1,7 +1,7 @@
 import { useAuth } from '../../contexts/AuthContext';
 import React, { useEffect, useState } from 'react'
 import { ENDPOINTS } from '../../services/api/endpoints';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { IoMdOpen } from "react-icons/io";
 
 const EventDetails = () => {
@@ -10,8 +10,6 @@ const EventDetails = () => {
   const [venue, setVenue] = useState ([])
   const [loading, setLoading] = useState(true);
   const { authenticatedFetch } = useAuth();
-
-  
 
   const getEvent = async () => {
     try {
@@ -83,13 +81,18 @@ const EventDetails = () => {
       <div className="details-details">
         <p><span className="semi-bold">When? </span>{formattedDate}, {formattedTime}</p>
         <p><span className="semi-bold">What? </span>{event.category.title} | {event.description}</p>
-        <p><span className="semi-bold">Where? </span>{venue.streetAddress} {venue.postCode} {venue.city} </p>
+        <p><span className="semi-bold">Where? </span>{venue.title} | {venue.streetAddress} {venue.postCode} {venue.city} </p>
         {venue.mapUrl && (
           <div>
             <a href={venue.mapUrl} target="_blank">View map <IoMdOpen /> </a>
           </div>
         )}
         <p><span className="semi-bold">How much? </span>Tickets are ${event.price}</p>
+      </div>
+      <div className="center-div">
+        <Link to="/events">
+            <button className="btn btn-large btn-pink">Go Back</button>
+        </Link>
       </div>
     </div>
   )

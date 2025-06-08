@@ -1,8 +1,6 @@
-import React from 'react'
-
-const Footer = () => {
+const OpenFooter = () => {
   return (
-    <div className="footer">
+    <div className="open-footer">
       <p className="footer-text title-text semi-bold">Copyright © 2025 Peterdraw (design)</p>
       <p className="footer-text title-text semi-bold">Copyright © 2025 Jasmin de Freitas (web dev)</p>
       {/* <div className="links-container">
@@ -14,4 +12,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default OpenFooter
